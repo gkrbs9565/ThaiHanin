@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원 인증 성공</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/Member Verification.css" />
+  </head>
+  <body>
+    <!-- 상단 공통 헤더 -->
+    <header class="basic-header">
+      <div class="basic-header__inner">
+        <div class="basic-header__logo">
+          <a href="member.html">
+            <img src="img/logo.png" alt="재태국한인회" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="content">
+      <main class="basic-main">
+        <section class="verification-intro">
+          <h1 class="verification-intro__title">회원 인증 성공</h1>
+          <p class="verification-intro__subtitle">Member authentication successful</p>
+        </section>
+        <!-- 멤버십 카드 + 프로필 -->
+        <section class="basic-profile">
+          <div class="basic-profile__left">
+            <div class="basic-profile__avatar">
+              <img src="img/profile-default.png" alt="" />
+            </div>
+            <div class="basic-profile__info">
+              <p class="basic-profile__name">회원이름 님</p>
+              <p class="basic-profile__grade">회원등급</p>
+            </div>
+          </div>
+        </section>
+
+
+        <div id="memberAfterUpgrade">
+          <!-- 멤버십 정보 카드 (Name / Passport / QR) -->
+          <section class="basic-name-card">
+            <div class="basic-name-card__row">
+              <span class="basic-name-card__label">Name</span>
+              <span class="basic-name-card__value" id="memberCardName"></span>
+            </div>
+            <div class="basic-name-card__row">
+              <span class="basic-name-card__label">Passport No</span>
+              <span class="basic-name-card__value" id="memberCardPassport"></span>
+            </div>
+
+          </section>
+
+          <!-- 보유 쿠폰 섹션 -->
+          <section class="coupon-section">
+            <h2 class="coupon-section__title">보유 쿠폰</h2>
+            <div class="coupon-list">
+              <button type="button" class="coupon-item" data-coupon="mp">
+                <div class="coupon-item__left">
+                  <span class="coupon-item__status" data-coupon-status>사용가능</span>
+                  <span class="coupon-item__name">MP LAB Health Check-Up</span>
+                </div>
+                <span class="coupon-item__arrow">
+                  <img src="img/caret-right-mini.svg" alt="" />
+                </span>
+              </button>
+
+              <button type="button" class="coupon-item" data-coupon="bria">
+                <div class="coupon-item__left">
+                  <span class="coupon-item__status" data-coupon-status>사용가능</span>
+                  <span class="coupon-item__name">BRia LAB Health Check-Up</span>
+                </div>
+                <span class="coupon-item__arrow">
+                  <img src="img/caret-right-mini.svg" alt="" />
+                </span>
+              </button>
+            </div>
+          </section>
+
+        <!-- 정회원(법인회원) 혜택 안내 -->
+        <section class="basic-section basic-section--benefits">
+          <h2 class="basic-section__title">상시 혜택</h2>
+
+          <!-- 상시 혜택 -->
+          <div class="benefit-category">
+            <h3 class="benefit-category__title">상시 혜택</h3>
+            <div class="benefit-accordion">
+              <!-- 혜택 1 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택1. 방콕병원 제휴할인 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 등록 회원 본인 및 가족 (부모, 배우자, 자녀)</li>
+                  </ul>
+
+                  <p><strong>2. 이용 병원</strong></p>
+                  <ul>
+                    <li>총 13개 지역, 16개 병원 (방콕병원 본원 포함)</li>
+                    <li>치앙마이, 후아힌, 콘캔, 팍총, 찬타부리, 핏사눌록, 치앙라이, 우돈, 푸켓, 파타야, 라용 일대 등</li>
+                  </ul>
+
+                  <p><strong>3. 서비스 이용 조건</strong></p>
+                  <ul>
+                    <li>한인회 정회원증 또는 법인회원증, QR 코드 지참 필수</li>
+                    <li>타 프로모션과 중복 불가</li>
+                  </ul>
+
+                  <p><strong>4. 주요 할인 혜택</strong></p>
+                  <ul>
+                    <li>약제, 검사, 엑스레이 비용: 10% 할인 (일부 지역 5%)</li>
+                    <li>병실료: 최대 20% 할인 (병원·병실 종류에 따라 상이)</li>
+                    <li>일부 병원 치과 치료: 10% 할인 (교정 등 특수 진료 제외)</li>
+                  </ul>
+
+                  <p><strong>5. 지역별 주요 혜택 요약</strong></p>
+                  <ul>
+                    <li><strong>Bangkok Hospital (BHQ) / Chiangmai / Hua Hin / Khon Kaen</strong><br />약·검사·엑스레이 10%, 병실료 20%, 치과 10%</li>
+                    <li><strong>Pakchong / Chanthaburi</strong><br />약·검사·엑스레이 10%, 병실료 10~20%</li>
+                    <li><strong>Phitsanulok</strong><br />약·검사·엑스레이 5%, 병실료 10% (ICU 제외)</li>
+                    <li><strong>Chiangrai / Udon / Phuket / Pattaya / Rayong Network 병원</strong><br />약제 10%, 병실료 10~20% (병원별 상이)</li>
+                  </ul>
+
+                  <p><strong>6. 추가 서비스</strong></p>
+                  <ul>
+                    <li>24시간 이메일 상담 서비스 제공 (비의료 정보 포함)</li>
+                    <li>한국인 통역 제공 (병원별 상이)</li>
+                    <li>긴급 상황 시, 주태국 한국대사관에 즉시 연락 조치</li>
+                  </ul>
+
+                  <p><strong>7. 개인정보 보호</strong></p>
+                  <ul>
+                    <li>양 기관은 PDPA 등 관련 법령 준수</li>
+                    <li>위반 시 손해배상 책임 발생</li>
+                  </ul>
+
+                  <p><strong>8. 계약 기간</strong></p>
+                  <ul>
+                    <li>유효기간: 2025년 7월 1일 ~ 2027년 6월 30일</li>
+                    <li>사전 30일 서면 통보 시 해지 가능</li>
+                    <li>해지 전 미납 의료비 정산 필요</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 2 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택2. 범룽랏 국제병원 Self-Pay Program 제휴할인
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>회원(Member): 재태국한인회 정회원 및 법인회원</li>
+                    <li>가족(Family Member): 회원의 부모, 배우자, 자녀</li>
+                    <li>외부회원(Exclusive Member): 협력단체 구성원 등, 별도 지정자</li>
+                  </ul>
+
+                  <p><strong>2. 할인 혜택</strong></p>
+                  <ul>
+                    <li>현금 결제: 15% 할인</li>
+                    <li>신용카드 결제: 10% 할인</li>
+                    <li>대상 항목:
+                      <ul>
+                        <li>병실료(Room)</li>
+                        <li>약품 및 건강보조식품</li>
+                        <li>검사(Laboratory)</li>
+                        <li>의료 소모품</li>
+                        <li>엑스레이</li>
+                        <li>치과 진료: 10% (교정 치료 제외)</li>
+                      </ul>
+                    </li>
+                    <li>할인 제외: 의사 진료비, 항암치료, 패키지 상품 등</li>
+                  </ul>
+
+                  <p><strong>3. 등록 및 병원 이용 시 필요 서류</strong></p>
+                  <ul>
+                    <li>회원: 재태국한인회 회원증 또는 병원 앱 전자카드/직원증/보험카드</li>
+                    <li>가족: 회원증 + 가족관계 증빙서류 (가족관계증명서, 혼인신고서 등)</li>
+                    <li>외부회원: 병원 전자카드</li>
+                  </ul>
+
+                  <p><strong>4. 유효기간 및 해지</strong></p>
+                  <ul>
+                    <li>카드의 만료일까지 유효</li>
+                    <li>병원 또는 한인회가 30일 전 서면 통보 시 해지 가능</li>
+                    <li>계약은 연 단위 자동 갱신</li>
+                  </ul>
+
+                  <p><strong>5. 병원 그룹 소속 기관</strong></p>
+                  <ul>
+                    <li>범룽랏 국제병원 (Bumrungrad International Hospital)</li>
+                    <li>Vitallife Wellness Center (예방의학)</li>
+                    <li>Esperance Clinic (암 통합 치료 전문)</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 3 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택3. MedPark 병원 제휴할인 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 등록 정회원 및 법인회원 (외래/입원 진료 시)</li>
+                  </ul>
+
+                  <p><strong>2. 주요 혜택</strong></p>
+                  <ul>
+                    <li>병실료: 10% 할인 (식사비, 간호비, 서비스요금 제외)</li>
+                    <li>약품: 5% 할인 (항암제, 호르몬제, 백신, 한방약 등 일부 항목 제외)</li>
+                    <li>치과 치료: 5% 할인 (스케일링, 충치치료, 발치, 신경치료 / 치과의사 진료비 제외)</li>
+                    <li>24시간 이메일 상담: <a href="mailto:access@medparkhospital.com">access@medparkhospital.com</a></li>
+                    <li>한국어·태국어·영어 통역 서비스 무료 제공</li>
+                  </ul>
+
+                  <p><strong>3. 이용 시 제출서류</strong></p>
+                  <ul>
+                    <li>재태국한인회 회원증</li>
+                    <li>보험카드 (해당자)</li>
+                    <li>진료 전 제시해야 할인 적용 가능</li>
+                  </ul>
+
+                  <p><strong>4. 보험 적용 관련</strong></p>
+                  <ul>
+                    <li>보험 적용 후 남은 본인 부담금에 대해 할인 적용 가능</li>
+                    <li>또는 전체 금액 할인 vs 보험 청구 중 선택 가능 (병원 규정에 따름)</li>
+                  </ul>
+
+                  <p><strong>5. 계약 기간</strong></p>
+                  <ul>
+                    <li>2025년 6월 15일 ~ 2027년 6월 14일 (2년간)</li>
+                    <li>종료 30일 전 서면 합의 시 연장 가능</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 4 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택4. Samitivej &amp; BNH 병원 제휴할인 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 정회원 및 법인회원</li>
+                  </ul>
+
+                  <p><strong>2. 이용 병원</strong></p>
+                  <ul>
+                    <li>Samitivej Sukhumvit / Srinakarin / Children’s / Chinatown / Thonburi / Sriracha</li>
+                    <li>BNH Hospital</li>
+                  </ul>
+
+                  <p><strong>3. 주요 할인 혜택</strong></p>
+                  <ul>
+                    <li>입원실 요금 15% 할인 (식사·간병비·서비스 요금 제외)</li>
+                    <li>처방약 10% 할인 (항암제·호르몬제·백신 등 제외)</li>
+                    <li>치과 시술 5% 할인 (스케일링, 충치치료, 발치, 신경치료 / 진료비 제외)</li>
+                    <li>무료 통역 서비스 제공<br />
+                      Tel: 02-022-2127, 02-022-2128<br />
+                      Email: <a href="mailto:svhkorean@samitivej.co.th">svhkorean@samitivej.co.th</a>
+                    </li>
+                  </ul>
+
+                  <p><strong>4. 유효기간</strong></p>
+                  <ul>
+                    <li>본 제휴 할인은 2027년 12월 31일까지 유효</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 5 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택5. 신팻 병원 제휴할인 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p>
+                    신팻 병원 제휴할인 프로그램은 추후 업데이트 예정입니다.
+                  </p>
+                </div>
+              </article>
+
+              <!-- 혜택 6 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택6. 한국 미래의료재단 건강검진 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 검진 비용 및 대상</strong></p>
+                  <ul>
+                    <li>검진비용: 40만원 (정상가 대비 최대 50% 할인)</li>
+                    <li>대상: 재태국한인 정회원, 법인회원 및 가족</li>
+                  </ul>
+
+                  <p><strong>2. 기본 검진 항목</strong></p>
+                  <ul>
+                    <li>위·대장 내시경 (조건부)</li>
+                    <li>치과검진, 갑상선 검사, 심전도, 혈액검사 등 약 90여 가지 항목</li>
+                  </ul>
+
+                  <p><strong>3. 정밀 검사 (택 3)</strong></p>
+                  <ul>
+                    <li>MRI, CT, 초음파 등 총 24개 항목 중 3개 선택</li>
+                  </ul>
+
+                  <p><strong>4. 성별 추가 검사</strong></p>
+                  <ul>
+                    <li>여성: 유방암·자궁암·골반 초음파</li>
+                    <li>남성: 전립선 초음파</li>
+                  </ul>
+
+                  <p><strong>5. 예약 방법</strong></p>
+                  <ul>
+                    <li>전화: 02-540-0001 (내선 1번) – 예약 시 반드시 “한인회”라고 언급</li>
+                    <li>온라인: 미래의료재단 홈페이지 간편예약</li>
+                    <li>카카오톡: 해외 거주자용 채널 이용 가능</li>
+                  </ul>
+
+                  <p><strong>6. 검진 장소</strong></p>
+                  <ul>
+                    <li>서울 강남구 테헤란로 513 K타워 9·10층 (선릉역 5번 출구 인근)</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 7 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택7. 한국 청병원 건강검진 프로그램
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 검진 비용 및 대상</strong></p>
+                  <ul>
+                    <li>프로그램명: 청케어 프리미엄+</li>
+                    <li>검진비용: 400,000원 (정상가 1,000,000원 → 약 60% 할인)</li>
+                    <li>대상: 재태국한인 정회원, 법인회원 및 모든 가족</li>
+                  </ul>
+
+                  <p><strong>2. 주요 검진 항목</strong></p>
+                  <ul>
+                    <li>위·대장 수면 내시경</li>
+                    <li>폐 CT, 뇌 MRI + 뇌혈관 MRA</li>
+                    <li>혈액·소변 종합검사 등 약 100여 개 항목</li>
+                  </ul>
+
+                  <p><strong>3. 추가 항목 할인</strong></p>
+                  <ul>
+                    <li>복부·갑상선·경동맥 초음파 등 추가 시 할인된 비용 적용</li>
+                    <li>유방·전립선 초음파, 뇌 위축도 검사 등 선택 가능</li>
+                  </ul>
+
+                  <p><strong>4. 장소 및 예약</strong></p>
+                  <ul>
+                    <li>청병원 건강검진센터 – 서울 강동구 올림픽로 546 (천호역 3번 출구 인근)</li>
+                    <li>예약: 02-2202-3114(내선2), 또는 오픈 카카오톡 채널</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 8 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택8. 법률서비스 제휴 (케이팁)
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 정회원 및 법인회원</li>
+                  </ul>
+
+                  <p><strong>2. 제공 서비스</strong></p>
+                  <ul>
+                    <li>기업 관련 법률자문</li>
+                    <li>형사 소송</li>
+                    <li>민사 소송</li>
+                  </ul>
+
+                  <p><strong>3. 문의처</strong></p>
+                  <ul>
+                    <li>(주)케이팁 – <a href="mailto:ktipact@gmail.com">ktipact@gmail.com</a></li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 9 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택9. 자동차보험 제휴할인 프로그램 (ICON 보험중개)
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 정회원 및 법인회원</li>
+                  </ul>
+
+                  <p><strong>2. 혜택 제공 기준</strong></p>
+                  <ul>
+                    <li>ICON 보험중개법인을 통해 자동차보험 가입 시 적용</li>
+                    <li>정회원/법인 지정대상자 명의 차량 1대 한정</li>
+                    <li>순 보험료 기준 최대 8% 할인 (인지세·부가세 제외)</li>
+                    <li>의무보험(책임보험) 및 타 할인과 중복 불가</li>
+                    <li>1년간 유효, 갱신 시 회원 자격 재확인</li>
+                  </ul>
+
+                  <p><strong>3. 제출 서류</strong></p>
+                  <ul>
+                    <li>재태국한인회 회원 QR코드 또는 회원증</li>
+                    <li>차량 소유주 여권 사본</li>
+                    <li>차량 등록증 사본</li>
+                    <li>연락처 (이메일, 전화번호)</li>
+                    <li>현 보험 증권 사본</li>
+                  </ul>
+
+                  <p><strong>4. 문의 및 신청</strong></p>
+                  <ul>
+                    <li><a href="mailto:wsryu@theiconinsure.com">wsryu@theiconinsure.com</a></li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 10 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택10. 차량 정비 제휴할인 (Hans Auto)
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 적용 대상</strong></p>
+                  <ul>
+                    <li>재태국한인회 정회원</li>
+                  </ul>
+
+                  <p><strong>2. 할인 품목</strong></p>
+                  <ul>
+                    <li>엔진오일 교환: 엔진오일 10% 할인</li>
+                    <li>차량 정비 시 정비 공임 10% 할인</li>
+                    <li>타이어 교환 고객: 펑크 수리 무상</li>
+                    <li>상시 차량 점검 무상 (단, 견적서 발행은 유상)</li>
+                  </ul>
+
+                  <p><strong>3. 혜택 조건</strong></p>
+                  <ul>
+                    <li>정회원 본인 명의 차량 1대에 한함</li>
+                    <li>상용차 및 특장 차량 제외</li>
+                    <li>할인 금액은 현금 환불 불가</li>
+                    <li>타 할인과 중복 적용 불가</li>
+                    <li>1년간 유효, 갱신 시 정회원 자격 확인</li>
+                  </ul>
+
+                  <p><strong>4. 문의처</strong></p>
+                  <ul>
+                    <li>한종욱 대표 – 097-131-6080 (09:00~18:00)</li>
+                    <li><a href="mailto:hansauto1349@gmail.com">hansauto1349@gmail.com</a></li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 혜택 11 -->
+              <article class="benefit">
+                <button class="benefit__header" type="button">
+                  <span class="benefit__title">
+                    혜택11. 정회원·법인회원 전용 보험 상품 및 혜택
+                  </span>
+                  <span class="benefit__toggle" aria-hidden="true">
+                    <img src="img/caret-down-bold.svg" alt="" />
+                  </span>
+                </button>
+                <div class="benefit__body">
+                  <p><strong>1. 주요 혜택 개요</strong></p>
+                  <ul>
+                    <li>상품별 보험료 할인 (가입 첫 회에 한해 일정 금액 환급)</li>
+                    <li>한국 거주 수혜자도 사망보장금 수령 가능 (소정 서류 제출 시)</li>
+                  </ul>
+
+                  <p><strong>2. 보험 상품 유형</strong></p>
+                  <ul>
+                    <li>건강보험: 입원·통원 치료비 보장</li>
+                    <li>상해보험: 사고 시 사망보장 및 의료비 보장</li>
+                    <li>저축 생명보험: 소득공제 혜택 포함</li>
+                  </ul>
+
+                  <p><strong>3. 피보험자 조건 (예시)</strong></p>
+                  <ul>
+                    <li>재태국한인회 정회원 또는 법인회원</li>
+                    <li>태국 내 취업(Work Permit 보유) 또는 2년 이상 사업·법인 운영자</li>
+                    <li>배우자가 태국인이며 태국 거주, 태국 내 주소지 보유 등</li>
+                  </ul>
+
+                  <p><strong>4. 가입 불가 대상 (예시)</strong></p>
+                  <ul>
+                    <li>관광비자·교육비자(가디언 포함) 등 단기 체류 비자 소지자</li>
+                    <li>제한 국가 거주자 또는 해당 국가에서 수입 발생자</li>
+                  </ul>
+
+                  <p><strong>5. 가입 시 필요서류</strong></p>
+                  <ul>
+                    <li>여권 및 비자 사본</li>
+                    <li>노동허가증 사본</li>
+                    <li>사업체 운영 시 법인등록서 사본</li>
+                    <li>배우자가 태국인인 경우 혼인증명서 또는 거주증명서</li>
+                  </ul>
+
+                  <p><strong>6. 문의 및 견적</strong></p>
+                  <ul>
+                    <li>가입 희망자 영문 성명, 생년월일, 희망 상품명 (예: Whole Life 99/20 Option 2) 등을 한인회 사무국으로 전달</li>
+                    <li>이메일: <a href="mailto:thaihanin@gmail.com">thaihanin@gmail.com</a></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+      <!-- 쿠폰 상세보기 모달 -->
+      <div id="couponModal" class="coupon-modal" aria-hidden="true">
+        <div class="coupon-modal__backdrop"></div>
+        <div class="coupon-modal__content" role="dialog" aria-modal="true" aria-labelledby="couponModalTitle">
+          <header class="coupon-modal__header">
+            <h3 id="couponModalTitle" class="coupon-modal__title">쿠폰 상세보기</h3>
+            <button type="button" class="coupon-modal__close" aria-label="닫기">✕</button>
+          </header>
+          <div class="coupon-modal__body">
+            <!-- MP LAB 쿠폰 상세 -->
+            <div class="coupon-detail coupon-detail--mp is-active">
+              <p><strong>재태국 한인회원 무료 건강검진 특별 혜택 안내</strong></p>
+              <p>MP Healthplus Clinic (Health Plus Global Laboratory Co., Ltd.)</p>
+              <p><strong>1. 검진 비용 및 대상</strong></p>
+              <p>- 기본 검진 비용: 무료 (비회원가 1,900바트)</p>
+              <p>- 대상: 재태국 한인회원 정회원 및 법인회원 (한인회 회원증 QR코드 또는 회원증 소지자)</p>
+              <p>- 검진 방식: 개인 단위의 Walk-in 건강검진 프로그램</p>
+              <p><strong>2. 기본 검진 항목 (총 13개 항목 포함)</strong></p>
+              <p>- Health Check 45 패키지</p>
+              <p>- CBC (혈액 일반 검사)</p>
+              <p>- 소변 검사</p>
+              <p>- 혈당 (당뇨)</p>
+              <p>- 신장 기능: BUN, Creatinine, Uric Acid</p>
+              <p>- 지질 검사: 총콜레스테롤, 중성지방, HDL, LDL</p>
+              <p>- 간 기능 검사: SGOT(AST), SGPT(ALT), ALP</p>
+              <p><strong>3. 추가 유료 검사 패키지 할인 혜택 (각 항목 최대 50% 할인)</strong></p>
+              <p>- 종합 Executive Check, 남/여성 암 표지자, 호르몬, 항노화, 갑상선, 빈혈, 스트레스 호르몬 등</p>
+              <p><strong>4. 검진 결과 및 안내</strong></p>
+              <p>- 결과 제공: 2일 이내 개별 통보</p>
+              <p>- 검사 장소: MP Healthplus Clinic (Lat Phrao 87 Soi 25, MP Group 빌딩 3층)</p>
+              <button type="button" class="coupon-use-btn" data-coupon="mp">이 쿠폰 사용하기</button>
+            </div>
+            <!-- BRia LAB 쿠폰 상세 -->
+            <div class="coupon-detail coupon-detail--bria">
+              <p><strong>재태국 한인회원 무료 건강검진 혜택 안내</strong></p>
+              <p>Bangkok R.I.A. Lab Co., Ltd. (방콕 리아랩)</p>
+              <p><strong>1. 검진 대상 및 협약 개요</strong></p>
+              <p>- 대상: 재태국 한인회원 정회원 및 법인회원 (한인회 회원증 QR코드 또는 회원증 소지자)</p>
+              <p>- 협약 기간: 2025년 7월 1일부터 1년간 (상호 협의 시 연장 가능)</p>
+              <p>- 검진 장소: Bangkok R.I.A. Lab 본원 (Lat Phrao 110 소재)</p>
+              <p><strong>2. 주요 서비스 및 혜택</strong></p>
+              <p>- 기본 건강검진 및 각종 검사 서비스 제공</p>
+              <p>- 한국인의 니즈에 맞춘 맞춤형 검사 및 특별 패키지 제공</p>
+              <p><strong>3. 혈액 채취 및 출장 서비스</strong></p>
+              <p>- 본원 방문 채혈 기본</p>
+              <p>- 방콕 내 출장 채혈: 1회 방문당 1,000바트 (20명 이상 단체 예약 시 출장비 면제)</p>
+              <p><strong>4. 검진 결과 제공 방식</strong></p>
+              <p>- PDF 또는 Word 파일로 이메일 발송, 개인정보 철저 보호</p>
+              <button type="button" class="coupon-use-btn" data-coupon="bria">이 쿠폰 사용하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </main>
+    </div>
+
+    <!-- Footer (사이트 공통 영역) -->
+    <footer>
+      <div class="footerInfoTop">
+        <ul>
+          <li>
+            <span><b>Phone</b> +66-2-1004749</span>
+            <span>
+              <a
+                href="https://www.facebook.com/people/%EC%9E%AC%ED%83%9C%EA%B5%AD%ED%95%9C%EC%9D%B8%ED%9A%8C/61579825591555/"
+                ><img src="img/facebook.svg" alt="facebook"
+              /></a>
+              <a href="https://pf.kakao.com/_Bjfxbn"
+                ><img src="img/kakao-ch.svg" alt="kakao-ch"
+              /></a>
+            </span>
+          </li>
+          <li>
+            <span><b>Email</b> thaihanin@gmail.com</span>
+          </li>
+          <li>
+            <span><b>Tax ID</b> 0993000179251</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footerInfoBottom">
+        <p>사단법인 재태국한인회 (The Korean Association in Thailand)</p>
+        <p>
+          23/16 Sorachai Building 12 Fl., 23 Soi Sukhumvit 63, Klong Tan Nuea,
+          Wattana, Bangkok 10110, Thailand
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="copyright">
+        <p>
+          ⓒ 2025 The Korean Association in Thailand (재태국한인회) All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    
+    <script src="script/MemberVerification.js"></script>
+  </body>
+</html>

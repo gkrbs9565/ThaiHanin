@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 약관 동의</title>
+    <!-- 사이트 공통 스타일 -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- 약관 동의 전용 스타일 -->
+    <link rel="stylesheet" href="css/upgrade.css" />
+  </head>
+  <body>
+    <!--
+      상단 페이지 헤더
+      - 좌측: 뒤로가기 아이콘 (실제 구현 시 history.back() 또는 이전 페이지 링크 연결)
+      - 중앙: "회원가입 약관 동의" 제목
+      - 우측: 전체 메뉴(햄버거) 아이콘
+    -->
+    <header class="agree-header">
+      <!--
+        헤더 전체는 가로 100%를 차지하고,
+        .agree-header__inner가 로그인/메뉴 페이지와 동일한 가로 폭으로 중앙 정렬된다.
+      -->
+      <div class="agree-header__inner">
+        <button
+          type="button"
+          class="agree-header__icon"
+          aria-label="이전 페이지로 이동"
+        >
+          <a href="member.html"><img src="img/caret-left-mini.svg" alt="뒤로가기" /></a>
+        </button>
+        <h1 class="agree-header__title">정회원 신청</h1>
+        <button
+          type="button"
+          class="agree-header__icon"
+          aria-label="전체 메뉴 열기"
+        >
+          <a href="menu.html"><img src="img/list.svg" alt="전체 메뉴" /></a>
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+      <main class="upgrade-main">
+        <section class="upgrade-section">
+          <h2 class="upgrade-title">정회원 신청 정보를 입력해주세요.</h2>
+
+          <div class="upgrade-guide-box">
+            <p class="upgrade-guide-text">
+              - <span class="required">*</span> 표시 항목은 정회원 혜택 제공을 위해 반드시 필요한 항목입니다.
+            </p>
+            <p class="upgrade-guide-text">
+              - 제출하지 않을 경우, 혜택이 제한적으로 제공됩니다.
+            </p>
+          </div>
+
+          <form class="upgrade-form">
+            <div class="upgrade-form-group">
+              <label for="passportNumber" class="upgrade-label">
+                여권번호<span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="passportNumber"
+                class="upgrade-input"
+                placeholder="여권번호 입력"
+                maxlength="8"
+              />
+            </div>
+
+            <div class="upgrade-form-group">
+              <span class="upgrade-label">
+                여권 사진<span class="required">*</span>
+              </span>
+              <div class="upload-box">
+                <input
+                  type="file"
+                  id="passportImage"
+                  accept="image/*"
+                />
+                <span class="upload-plus">+</span>
+              </div>
+            </div>
+
+            <div class="upgrade-form-row">
+              <div class="upgrade-form-column">
+                <span class="upgrade-label">
+                  회비 납부 사진<span class="required">*</span>
+                </span>
+                <div class="upload-box">
+                  <input
+                    type="file"
+                    id="paymentImage"
+                    accept="image/*"
+                  />
+                  <span class="upload-plus">+</span>
+                </div>
+              </div>
+
+              <div class="upgrade-form-column">
+                <span class="upgrade-label">개인 프로필 사진</span>
+                <div class="upload-box">
+                  <input
+                    type="file"
+                    id="profileImage"
+                    accept="image/*"
+                  />
+                  <span class="upload-plus">+</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="upgrade-buttons">
+              <button type="submit" class="upgrade-submit-btn">신청</button>
+              <button
+                type="button"
+                class="upgrade-cancel-btn"
+                onclick="history.back()"
+              >
+                취소
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+
+    <!-- Footer (사이트 공통 영역) -->
+    <footer>
+      <div class="footerInfoTop">
+        <ul>
+          <li>
+            <span><b>Phone</b> +66-2-1004749</span>
+            <span>
+              <a
+                href="https://www.facebook.com/people/%EC%9E%AC%ED%83%9C%EA%B5%AD%ED%95%9C%EC%9D%B8%ED%9A%8C/61579825591555/"
+                ><img src="img/facebook.svg" alt="facebook"
+              /></a>
+              <a href="https://pf.kakao.com/_Bjfxbn"
+                ><img src="img/kakao-ch.svg" alt="kakao-ch"
+              /></a>
+            </span>
+          </li>
+          <li>
+            <span><b>Email</b> thaihanin@gmail.com</span>
+          </li>
+          <li>
+            <span><b>Tax ID</b> 0993000179251</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footerInfoBottom">
+        <p>사단법인 재태국한인회 (The Korean Association in Thailand)</p>
+        <p>
+          23/16 Sorachai Building 12 Fl., 23 Soi Sukhumvit 63, Klong Tan Nuea,
+          Wattana, Bangkok 10110, Thailand
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="copyright">
+        <p>
+          ⓒ 2025 The Korean Association in Thailand (재태국한인회) All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script/upgrade.js"></script>
+  </body>
+</html>

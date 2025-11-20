@@ -1,0 +1,542 @@
+/* 정회원 신청 정보 입력 전용 레이아웃 */
+
+.upgrade-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.upgrade-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.upgrade-guide-box {
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.upgrade-guide-text {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.required {
+  color: #ec2028;
+  margin-right: 2px;
+}
+
+.upgrade-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.upgrade-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 두 번째 그룹(여권 사진) 안의 박스를 중앙 정렬 */
+.upgrade-form-group:nth-of-type(2) {
+  align-items: flex-start;
+}
+
+.upgrade-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px; /* 라벨과 박스 사이 간격 통일 */
+}
+
+.upgrade-input {
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.upgrade-input::placeholder {
+  color: #9ca3af;
+}
+
+/* 업로드 박스 */
+
+.upload-box {
+  position: relative;
+  width: 212px;     /* 가로 180px 고정 */
+  height: 212px;    /* 세로 180px 고정 (정사각형) */
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 정회원 신청 사진 레이아웃: 여권(왼쪽) + 회비/프로필(오른쪽) */
+
+.upgrade-photo-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.upgrade-photo-left {
+  flex: 0 0 160px; /* 여권 사진 박스 폭과 동일 */
+}
+
+.upgrade-photo-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.upgrade-photo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 좁은 화면에서는 다시 세로로 쌓이도록 */
+@media (max-width: 480px) {
+  .upgrade-photo-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .upgrade-photo-left,
+  .upgrade-photo-right {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .upgrade-photo-item {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+.upload-box input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-plus {
+  position: absolute;
+  font-size: 40px;
+  color: #d1d5db;
+  pointer-events: none;
+}
+
+.upload-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* 업로드 이미지 삭제 버튼 (X 아이콘) */
+.upload-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;              /* 파일 선택 전에는 숨김 */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.upload-remove img {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+/* 여권/회비/프로필 사진 2열 레이아웃 */
+
+.upgrade-form-row {
+  display: flex;
+  justify-content: space-between; /* 양쪽으로 나란히 */
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.upgrade-form-column {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 버튼 영역 */
+
+.upgrade-buttons {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upgrade-submit-btn,
+.upgrade-cancel-btn {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upgrade-submit-btn {
+  background-color: #ec2028;
+  color: #ffffff;
+}
+
+.upgrade-submit-btn:hover {
+  background-color: #c60e17;
+}
+
+.upgrade-cancel-btn {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* 회원가입 약관 동의 전용 스타일 */
+
+/* 페이지 레이아웃 기본값 (로그인/메뉴 페이지와 통일감 유지) */
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* 상단 헤더 */
+.agree-header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.agree-header__inner {
+  max-width: 360px;
+  width: 100%;
+  padding-top: 2px;
+  margin:0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.agree-header__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 오른쪽 화살표 (이미지 아이콘) */
+.agree-row__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agree-row__arrow img {
+  width: 20px;   /* 약관 보기용 아이콘 크기 살짝 키움 */
+  height: 20px;
+  display: block;
+}
+
+.agree-header__icon {
+  border: none;
+  background: none;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.agree-header__icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* 메인 컨텐츠 래퍼 (로그인 페이지의 .content와 동일한 가로 규격 사용) */
+.content {
+  flex: 1;
+  max-width: 360px;
+  width: 100%;
+  margin: 80px auto 60px;
+  box-sizing: border-box;
+}
+
+/* 약관 동의 전체 영역 */
+.agree-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* "약관 동의" 제목 */
+.agree-section__title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* 상단 회색 안내 박스 */
+.agree-info-box {
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 16px 16px 3px;
+  margin-bottom: 20px;
+}
+
+.agree-info-list {
+  margin: 0 0 8px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.agree-info-desc {
+  margin-top: -5px;
+  margin-left: 10px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* 전체 동의 박스 (흰색 박스, 테두리) */
+.agree-all-box {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
+
+/* 전체 동의 행 (기본 .agree-row 스타일을 덮어써서 왼쪽 정렬) */
+.agree-row.agree-row--all {
+  padding: 16px 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 전체 동의 텍스트를 왼쪽으로 붙이기 */
+  gap: 10px;                   /* 체크박스와 텍스트 사이 간격 */
+}
+
+/* 개별 약관 리스트 박스 */
+.agree-list {
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* 각 약관 행 */
+.agree-row {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 왼쪽: 체크박스 + 텍스트 */
+.agree-row__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 텍스트 */
+.agree-row__label {
+  font-size: 15px;
+  color: #111827;
+  text-align: left;
+  cursor: default;
+}
+
+/* 체크박스 스타일 (조금 크게) */
+.agree-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #ec2028;
+  cursor: pointer; /* 체크박스 위에서도 손가락 커서 표시 */
+}
+
+/* 약관 상세 모달 레이아웃 */
+.terms-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.45); /* 화면 전체를 어둡게 */
+}
+
+.terms-modal.is-open {
+  display: flex;
+}
+
+.terms-modal__content {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 24px 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terms-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.terms-modal__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.terms-modal__close {
+  border: none;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.terms-modal__body {
+  flex: 1;
+  overflow-y: auto;        /* 모달 안에서 내용 스크롤 */
+  font-size: 14px;
+  line-height: 1.6;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.terms-modal__body p {
+  margin: 0 0 16px;
+}
+
+.terms-section-title {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.terms-modal__footer {
+  margin-top: 8px;
+}
+
+.terms-modal__footer-btn {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ec2028;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.terms-modal__footer-btn:hover {
+  background-color: #c60e17;
+}
+
+/* 하단 "다음" 버튼 */
+.agree-next-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ec2028;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.agree-next-btn:hover {
+  background-color: #c60e17;
+}
+
+/* 반응형 레이아웃: 태블릿 및 데스크톱 */
+@media (min-width: 600px) {
+  .agree-header__inner,
+  .content,
+  .HeaderContent,
+  .footerInfoTop,
+  .footerInfoBottom,
+  footer hr,
+  .copyright {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .agree-header__inner,
+  .content,
+  .HeaderContent,
+  .footerInfoTop,
+  .footerInfoBottom,
+  footer hr,
+  .copyright {
+    max-width: 520px;
+  }
+}
+
+/* 모바일 전용 레이아웃 조정 */
+@media (max-width: 599px) {
+  footer {
+    height: auto;
+  }
+}

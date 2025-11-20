@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원 관리 | 재태국한인회</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 공통 스타일 (이미 사용 중인 main.css 기준) -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- 회원 관리 전용 스타일 -->
+    <link rel="stylesheet" href="css/memberList.css" />
+  </head>
+  <body>
+    <!-- 헤더: 다른 페이지와 겹치지 않게 member 전용 클래스 사용 -->
+    <header class="member-header">
+      <div class="member-header__inner">
+        <div class="member-header__left">
+          <button
+            type="button"
+            class="member-header__back"
+            aria-label="이전 페이지로 돌아가기"
+            onclick="history.back()"
+          >
+            &#x2190;
+          </button>
+          <h1 class="member-header__title">회원 관리</h1>
+        </div>
+        <div class="member-header__right">
+          <!-- 필요하면 나중에 관리자 로그아웃 버튼 등 추가 -->
+        </div>
+      </div>
+    </header>
+
+    <main class="member-page">
+      <!-- 안내 영역 -->
+      <section class="member-intro">
+        <h2 class="member-intro__title">정회원 / 법인회원 등급 관리</h2>
+        <p class="member-intro__text">
+          회원가입 시 저장된 회원 목록을 확인하고, 등급을
+          <strong>일반회원 / 정회원 / 법인회원</strong> 중 하나로 변경할 수 있습니다.
+          정회원으로 승격된 회원은 마이페이지에서 정회원 전용 양식과 혜택이 보이도록
+          연동할 수 있습니다.
+        </p>
+      </section>
+
+      <!-- 회원 리스트 영역 -->
+      <section class="member-list">
+        <div class="member-list__header">
+          <h3 class="member-list__title">회원 목록</h3>
+          <button
+            type="button"
+            class="member-list__refresh"
+            id="btnMemberRefresh"
+          >
+            목록 새로고침
+          </button>
+        </div>
+
+        <div class="member-table__wrapper">
+          <table class="member-table">
+            <thead>
+              <tr>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>현재 등급</th>
+                <th>신청 상태</th>
+                <th>상세보기</th>
+                <th>등급 변경</th>
+              </tr>
+            </thead>
+            <tbody id="memberTableBody">
+              <!-- memberList.js에서 자동 주입 -->
+            </tbody>
+          </table>
+        </div>
+
+        <p class="member-hint">
+          등급을 변경하면 변경사항이 자동으로
+          <span>localStorage</span>에 저장됩니다.
+        </p>
+      </section>
+    </main>
+
+    <script src="script/memberList.js"></script>
+  </body>
+</html>

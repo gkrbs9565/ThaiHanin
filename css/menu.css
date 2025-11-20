@@ -1,0 +1,157 @@
+/*
+  재태국한인회 전체 메뉴 전용 스타일
+  - 로그인/비로그인 공통 레이아웃
+  - 로그인 여부에 따라 guest-only / member-only 요소의 표시를 제어한다.
+*/
+/* 기본 박스 모델 초기화 (모든 요소의 box-sizing을 border-box로 통일) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 전체 문서 기본 여백 제거 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 전체 메뉴 페이지 공통 레이아웃 (세로 스크롤, 폰트, 배경색 등) */
+body.menu-page {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* 로그인 상태에 따라 guest-only / member-only 요소를 숨기는 규칙 */
+.menu-page.is-guest .member-only {
+  display: none !important;
+}
+
+.menu-page.is-member .guest-only {
+  display: none !important;
+}
+
+.menu-root {
+  flex: 1;
+  max-width: 360px;
+  width: 100%;
+  margin: 20px auto 60px;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+}
+
+/* 상단 "전체 메뉴" 헤더 영역 스타일 */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+
+.menu-header__title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 17px;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.menu-header__right {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  padding: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* "로그인 >" 또는 "회원 이름 님 >" 상단 타이틀 스타일 */
+.menu-main-title {
+  padding: 20px 0 8px;
+}
+
+.menu-main-title__text {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.menu-main-title__label {
+    text-decoration: none;
+    color: black;
+}
+
+/* My page 섹션 전체 영역 및 라벨 텍스트 스타일 */
+.menu-content {
+  padding-top: 8px;
+}
+
+/* My page 섹션 전체 영역 및 라벨 텍스트 스타일 */
+.menu-section__label {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* My page 안쪽 카드 박스 (연한 회색 배경 + 둥근 모서리) */
+.menu-card {
+  background-color: #f3f4f6;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 카드 안 각 메뉴 항목 (텍스트 링크처럼 보이지만 밑줄은 제거) */
+.menu-card__item,
+.menu-card__item:link,
+.menu-card__item:visited {
+  font-size: 15px;
+  font-weight: 400;
+  color: #111827;
+  text-decoration: none;
+}
+
+.menu-card__item:hover {
+  text-decoration: none;
+}
+
+/* 하단 중앙 "로그아웃" 버튼 (연한 회색 텍스트) */
+.menu-logout {
+  margin: 24px auto 0;
+  display: block;
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* 태블릿 / 데스크톱에서의 가로 폭 확장 규칙 */
+@media (min-width: 600px) {
+  .menu-root {
+    max-width: 440px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-root {
+    max-width: 520px;
+  }
+}

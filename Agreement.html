@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 약관 동의</title>
+    <!-- 사이트 공통 스타일 -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- 약관 동의 전용 스타일 -->
+    <link rel="stylesheet" href="css/agree.css" />
+  </head>
+  <body>
+    <!--
+      상단 페이지 헤더
+      - 좌측: 뒤로가기 아이콘 (실제 구현 시 history.back() 또는 이전 페이지 링크 연결)
+      - 중앙: "회원가입 약관 동의" 제목
+      - 우측: 전체 메뉴(햄버거) 아이콘
+    -->
+    <header class="agree-header">
+      <!--
+        헤더 전체는 가로 100%를 차지하고,
+        .agree-header__inner가 로그인/메뉴 페이지와 동일한 가로 폭으로 중앙 정렬된다.
+      -->
+      <div class="agree-header__inner">
+        <button
+          type="button"
+          class="agree-header__icon"
+          aria-label="이전 페이지로 이동"
+        >
+          <a href="index.html"><img src="img/caret-left-mini.svg" alt="뒤로가기" /></a>
+        </button>
+        <h1 class="agree-header__title">회원가입 약관 동의</h1>
+        <button
+          type="button"
+          class="agree-header__icon"
+          aria-label="전체 메뉴 열기"
+        >
+          <a href="menu.html"><img src="img/list.svg" alt="전체 메뉴" /></a>
+        </button>
+      </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="content">
+      <main class="agree-main">
+        <!-- 약관 동의 타이틀 및 안내 박스 -->
+        <section class="agree-section">
+          <h2 class="agree-section__title">약관 동의</h2>
+
+          <!-- 상단 회색 안내 박스 -->
+          <div class="agree-info-box">
+            <ol class="agree-info-list">
+              <li>무료 일반회원</li>
+              <li>유료 정회원, 법인회원 변경</li>
+            </ol>
+            <p class="agree-info-desc">
+              유료 정회원, 법인회원에게는 다양한 혜택이 제공되고 있습니다.
+            </p>
+          </div>
+
+          <!-- 전체 동의 박스 -->
+          <div class="agree-all-box">
+            <label class="agree-row agree-row--all">
+              <input type="checkbox" class="agree-checkbox" name="agree_all" />
+              <span class="agree-row__label">전체 동의</span>
+            </label>
+          </div>
+
+          <!-- 개별 약관 리스트 -->
+          <div class="agree-list">
+            <button type="button" class="agree-row">
+              <span class="agree-row__left">
+                <input
+                  type="checkbox"
+                  class="agree-checkbox"
+                  name="agree_terms_member"
+                />
+                <span class="agree-row__label">
+                  재태국한인회 멤버십 회원 약관(필수)
+                </span>
+              </span>
+              <span
+                class="agree-row__arrow"
+                data-modal-target="terms-member-modal"
+              >
+                <img src="img/caret-right-mini.svg" alt="약관 상세 보기" />
+              </span>
+            </button>
+
+            <button type="button" class="agree-row">
+              <span class="agree-row__left">
+                <input
+                  type="checkbox"
+                  class="agree-checkbox"
+                  name="agree_terms_privacy"
+                />
+                <span class="agree-row__label">
+                  개인정보 수집 및 이용 동의 (필수)
+                </span>
+              </span>
+              <span
+                class="agree-row__arrow"
+                data-modal-target="terms-privacy-modal"
+              >
+                <img src="img/caret-right-mini.svg" alt="약관 상세 보기" />
+              </span>
+            </button>
+
+            <button type="button" class="agree-row">
+              <span class="agree-row__left">
+                <input
+                  type="checkbox"
+                  class="agree-checkbox"
+                  name="agree_terms_third"
+                />
+                <span class="agree-row__label">
+                  개인정보 제3자 제공 동의 (선택)
+                </span>
+              </span>
+              <span
+                class="agree-row__arrow"
+                data-modal-target="terms-third-modal"
+              >
+                <img src="img/caret-right-mini.svg" alt="약관 상세 보기" />
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 다음 버튼 -->
+        <button type="button" class="agree-next-btn">다음</button>
+      </main>
+    </div>
+
+    <!-- 약관 상세 모달: 멤버십 회원 약관(필수) -->
+    <div class="terms-modal" id="terms-member-modal">
+      <div class="terms-modal__content">
+        <div class="terms-modal__header">
+          <h2 class="terms-modal__title">
+            재태국한인회 멤버십 회원 약관(필수)
+          </h2>
+          <button
+            type="button"
+            class="terms-modal__close"
+            data-modal-close
+            aria-label="약관 닫기"
+          >
+          <img src="img/x.svg" alt="">
+          </button>
+        </div>
+        <div class="terms-modal__body">
+          <p>
+            <strong class="terms-section-title">제1조 (목적)</strong><br />
+            본 약관은 재태국한인회(이하 "한인회"라 한다)의 멤버십 회원(이하 "회원"이라 한다)의 유형별 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제2조 (용어의 정의)</strong><br />
+            1. 멤버십 회원: 본 약관에 동의하고 한인회가 정한 가입 절차를 통해 멤버십 자격을 취득한 재태국 한인을 의미하며, 일반회원, 정회원, 법인회원으로 구분됩니다.<br />
+            2. 서비스: 한인회가 회원에게 제공하는 정보 제공, 커뮤니티 활동 지원, 각종 행사 참여 기회 부여 등 제반 활동을 의미합니다.<br />
+            3. 웹사이트: 한인회가 서비스를 회원에게 제공하기 위하여 운영하는 온라인 웹페이지 (예: www.thaikorean.kr 등)를 의미합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제3조 (약관의 효력 발생 및 변경)</strong><br />
+            1. 본 약관은 회원이 약관 내용에 동의하고 일반회원 가입을 완료 후 유료 정회원/법인회원으로 전환 시는 한인회가 이를 승낙함으로써 효력이 발생합니다.<br />
+            2. 한인회는 필요한 경우 관련 법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있습니다.<br />
+            3. 약관이 개정될 경우, 한인회는 개정된 약관을 웹사이트 초기 화면에 공지하거나 이메일, 기타 방법으로 회원에게 통지하며, 회원은 변경된 약관에 동의하지 않을 경우 회원 탈퇴를 요청할 수 있습니다. 개정 약관의 효력 발생일 이후에도 서비스를 계속 이용하는 경우에는 변경된 약관에 동의한 것으로 봅니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제4조 (회원 가입 및 자격)</strong><br />
+            1. 멤버십 회원 가입은 재태국 한인으로서 본 약관에 동의하고 한인회가 정한 소정의 가입 양식을 작성하여 신청하는 방법으로 이루어집니다.<br />
+            2. 회원의 유형은 다음과 같이 구분됩니다.<br />
+            1) 일반회원: 한인회 활동에 참여하기를 희망하는 개인 회원으로 회원 가입 후 자격이 부여됩니다.<br />
+            2) 정회원: 한인회 활동에 적극적으로 참여하고 정기적인 회비 납부 등 소정의 요건을 충족하여 한인회의 승인을 받은 개인 회원입니다. 정회원은 한인회 운영에 대한 의결권 등 추가적인 권리를 가질 수 있습니다. (구체적인 정회원 기준은 별도 규정으로 정함)<br />
+            3) 법인회원: 재태국 한인 관련 법인 또는 단체로서, 한인회 활동에 참여하고 소정의 요건을 충족하여 한인회의 승인을 받은 법인 또는 단체입니다. 법인회원은 소속 한인 임직원에게 한인회 활동 및 혜택을 제공할 수 있습니다. (구체적인 법인회원 기준은 별도 규정으로 정함)<br />
+            3. 한인회는 다음 각 호에 해당하는 경우 회원의 가입 승낙을 보류하거나 취소할 수 있습니다.<br />
+            1) 타인의 명의를 도용하여 가입 신청한 경우<br />
+            2) 허위 정보를 기재하거나 필수 정보를 누락한 경우<br />
+            3) 본 약관을 위반하여 회원 자격이 상실된 적이 있는 경우<br />
+            4) 기타 본 약관에 위배되거나 관련 법령에 저촉되는 경우<br />
+            4. 회원 자격은 가입 승낙일로부터 효력이 발생하며, 회원 가입 시 기재한 정보에 변경이 발생한 경우 회원은 즉시 한인회에 통보하여 수정해야 합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제5조 (회원의 의무)</strong><br />
+            1. 회원은 관계 법령, 본 약관의 규정, 이용 안내 및 한인회가 통지하는 사항 등을 준수하여야 하며, 기타 한인회 업무에 방해되는 행위를 하여서는 안 됩니다.<br />
+            2. 회원은 아이디(ID) 및 비밀번호 관리에 대한 일체의 책임을 부담하며, 자신의 아이디(ID) 및 비밀번호를 타인에게 양도, 대여할 수 없습니다.<br />
+            3. 회원은 자신의 아이디(ID) 및 비밀번호가 도용되거나 제3자가 사용하고 있음을 인지한 경우, 즉시 한인회에 통지하고 한인회의 안내에 따라야 합니다.<br />
+            4. 회원은 다음 각 호의 행위를 하여서는 안 됩니다.<br />
+            1) 다른 회원의 개인 정보를 수집, 저장, 유포하는 행위<br />
+            2) 저작권 등 타인의 권리를 침해하는 행위<br />
+            3) 공공질서 및 미풍양속에 위반되는 내용을 유포하는 행위<br />
+            4) 범죄와 결부된다고 객관적으로 판단되는 행위<br />
+            5) 기타 법령에 위배되거나 한인회의 건전한 운영을 방해하는 행위
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제6조 (한인회의 의무)</strong><br />
+            1. 한인회는 관련 법령과 본 약관이 정하는 바에 따라 지속적이고 안정적인 서비스를 제공하기 위해 노력합니다.<br />
+            2. 한인회는 회원의 개인 정보를 보호하며, 개인 정보 처리 방침을 수립하고 준수합니다.<br />
+            3. 한인회는 회원이 제기하는 정당한 의견이나 불만에 대해 신속히 처리하며, 처리가 곤란한 경우에는 그 사유와 처리 일정을 회원에게 통보합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제7조 (회원의 권리)</strong><br />
+            1. 회원은 각 회원 유형에 따라 한인회가 제공하는 멤버십 서비스 및 혜택을 이용할 수 있습니다.<br />
+            1) 일반회원: 한인회 웹사이트 이용, 정보 열람 등 기본적인 서비스를 이용할 수 있습니다.<br />
+            2) 정회원: 일반회원의 권리 외에 한인회 총회 등 의결 기구에서의 의결권, 특정 행사 및 프로그램 참여 우선권 등 정회원에게 부여되는 추가적인 권리를 가집니다.<br />
+            3) 법인회원: 일반회원의 권리 외에 한인회 활동에 단체 자격으로 참여하고, 소속 임직원들이 한인회 제공 서비스를 이용할 수 있도록 하는 권리 등 법인회원에게 부여되는 추가적인 권리를 가집니다.<br />
+            2. 회원은 자신의 개인 정보에 대한 열람 및 정정을 요구할 수 있습니다.<br />
+            3. 회원은 본 약관에 따라 언제든지 회원 탈퇴를 요청할 수 있습니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제8조 (서비스 이용 및 제한)</strong><br />
+            1. 서비스 이용은 한인회의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간을 원칙으로 합니다. 다만, 정기 점검, 서버의 증설 및 교체, 새로운 내용의 추가 등 운영상 필요한 경우 일정 기간 서비스 이용을 제한할 수 있습니다.<br />
+            2. 한인회는 회원이 다음 각 호의 사유에 해당하는 경우, 사전 통보 없이 서비스 이용을 제한하거나 회원 자격을 정지 또는 상실시킬 수 있습니다.<br />
+            1) 제5조 (회원의 의무)를 위반한 경우<br />
+            2) 한인회의 명예를 손상시키거나 업무를 방해한 경우<br />
+            3) 각 회원 유형별 자격 유지 요건(예: 회비 납부)을 충족하지 못한 경우<br />
+            4) 기타 관계 법령을 위반하거나 본 약관에 위배되는 행위를 한 경우
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제9조 (회원 탈퇴 및 자격 상실)</strong><br />
+            1. 회원은 언제든지 웹사이트 내의 절차를 통해 또는 한인회에 대한 통지로 탈퇴를 요청할 수 있으며, 한인회는 회원의 탈퇴 요청이 있는 즉시 회원 탈퇴 처리를 합니다.<br />
+            2. 회원이 제8조 2항의 사유로 회원 자격을 상실한 경우, 한인회는 해당 회원의 재가입을 제한할 수 있습니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제10조 (게시물의 관리)</strong><br />
+            1. 한인회는 회원이 웹사이트에 게시하거나 등록한 내용물이 다음 각 호에 해당된다고 판단되는 경우 사전 통지 없이 삭제할 수 있습니다.<br />
+            1) 타인을 비방하거나 명예를 훼손하는 내용인 경우<br />
+            2) 공공질서 및 미풍양속에 위반되는 내용인 경우<br />
+            3) 범죄적 행위에 결부된다고 인정되는 내용인 경우<br />
+            4) 한인회 또는 제3자의 저작권 등 기타 권리를 침해하는 내용인 경우<br />
+            5) 기타 관계 법령에 위반된다고 판단되는 경우
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제11조 (개인 정보 보호)</strong><br />
+            한인회는 관련 법령이 정하는 바에 따라 회원의 개인 정보를 보호하기 위해 노력합니다. 개인 정보 보호에 관한 사항은 별도로 고지되는 "개인 정보 처리 방침"에 따릅니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제12조 (손해배상)</strong><br />
+            한인회 또는 회원은 본 약관을 위반하여 상대방에게 손해를 입힌 경우, 그 손해를 배상하여야 합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제13조 (면책 조항)</strong><br />
+            1. 한인회는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.<br />
+            2. 한인회는 회원의 귀책사유로 인한 서비스 이용의 장애에 대하여는 책임을 지지 않습니다.<br />
+            3. 한인회는 회원이 서비스를 이용하여 기대하는 손익이나 서비스를 통하여 얻은 자료로 인한 손해에 관하여 책임을 지지 않습니다.<br />
+            4. 한인회는 회원이 웹사이트에 게시한 정보, 자료, 사실의 신뢰도, 정확성 등 내용에 관하여는 책임을 지지 않습니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">제14조 (준거법 및 재판관할)</strong><br />
+            1. 본 약관의 해석 및 회원과 한인회 간의 분쟁에 대하여는 대한민국 법을 준거법으로 합니다.<br />
+            2. 서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우, 대한민국 서울중앙지방법원을 전속 관할 법원으로 합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">부칙</strong><br />
+            본 약관은 2025년 7월 11일부터 시행합니다.
+          </p>
+        </div>
+        <div class="terms-modal__footer">
+          <button
+            type="button"
+            class="terms-modal__footer-btn"
+            data-modal-close
+          >
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 약관 상세 모달: 개인정보 수집 및 이용 동의(필수) -->
+    <div class="terms-modal" id="terms-privacy-modal">
+      <div class="terms-modal__content">
+        <div class="terms-modal__header">
+          <h2 class="terms-modal__title">개인정보 수집 및 이용 동의 (필수)</h2>
+          <button
+            type="button"
+            class="terms-modal__close"
+            data-modal-close
+            aria-label="약관 닫기"
+          >
+          <img src="img/x.svg" alt="">
+          </button>
+        </div>
+        <div class="terms-modal__body">
+          <p>
+            <strong class="terms-section-title">개인정보 수집 및 이용 동의 (필수)</strong><br />
+            재태국한인회(이하 '한인회')는 「개인정보보호법」 등 관련 법규에 의거하여 회원님의 개인정보를 아래와 같이 수집 및 이용하고 있습니다. 내용을 자세히 읽으신 후 동의 여부를 결정해 주시기 바랍니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">1. 개인정보 수집 및 이용 목적</strong><br />
+            한인회는 다음의 목적을 위해 개인정보를 수집하고 이용합니다. 수집된 개인정보는 다음의 목적 외 다른 용도로 사용되지 않으며, 이용 목적이 변경될 시에는 사전 동의를 구할 예정입니다.<br />
+            1) 회원 서비스 제공 및 관리 (회원 식별, 본인 확인, 회원제 서비스 이용에 따른 본인 확인 등)<br />
+            2) 회비 납부 확인 및 관리<br />
+            3) 한인회 소식, 공지사항, 행사 정보 등 정보 전달 (뉴스레터 발송, 알림톡, SMS 등)<br />
+            4) 설문조사, 이벤트 등 참여 기회 제공<br />
+            5) 통계 분석 및 서비스 개선 (이용 현황 분석, 서비스 개선 및 신규 서비스 개발 등)<br />
+            6) 민원 처리 및 분쟁 해결
+          </p>
+
+          <p>
+            <strong class="terms-section-title">2. 수집하는 개인정보 항목</strong><br />
+            한인회는 원활한 서비스 제공을 위해 최소한의 개인정보를 수집하고 있습니다.<br />
+            1) 필수 항목: 이름(한글/영문), 생년월일, 성별, 국적, 여권번호, 태국 현지 연락처(전화번호), 이메일 주소, 태국 현지 주소, 직업/직책, 가입 유형(일반/정회원/법인회원)<br />
+            2) 선택 항목: 소속 단체/회사명, 비상 연락처, 사진(프로필, 증명사진 등), 재태국 체류 형태(영주권, 비자 등)
+          </p>
+
+          <p>
+            <strong class="terms-section-title">3. 개인정보 보유 및 이용 기간</strong><br />
+            회원님의 개인정보는 회원 가입일로부터 서비스를 제공하는 기간 동안 보유 및 이용됩니다. 회원 탈퇴를 요청하거나 개인정보 수집 및 이용 목적이 달성된 후에는 지체 없이 파기됩니다. 다만, 다음의 경우 관련 법령에 의하여 명시된 보존 기간 동안 안전하게 보관합니다.<br />
+            1) 계약 또는 청약철회 등에 관한 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)<br />
+            2) 대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래 등에서의 소비자보호에 관한 법률)<br />
+            3) 소비자의 불만 또는 분쟁 처리에 관한 기록: 3년 (전자상거래 등에서의 소비자보호에 관한 법률)<br />
+            4) 세법 관계 법령에 따른 회계 관련 기록: 5년 (국세기본법, 법인세법 등)
+          </p>
+
+          <p>
+            <strong class="terms-section-title">4. 개인정보 파기 절차 및 방법</strong><br />
+            이용 목적이 달성된 개인정보는 다음의 절차 및 방법에 따라 파기합니다.<br />
+            1) 파기 절차: 회원님이 제공한 정보는 목적이 달성된 후 별도의 데이터베이스(DB)로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 따라 일정 기간 저장된 후 파기됩니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유 목적 이외의 다른 용도로 이용되지 않습니다.<br />
+            2) 파기 방법: 전자적 파일 형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제하며, 종이 문서에 기록된 개인정보는 분쇄기로 분쇄하거나 소각하여 파기합니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">5. 동의를 거부할 권리 및 동의 거부 시 불이익</strong><br />
+            회원님은 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 필수 항목에 대한 동의를 거부하실 경우 한인회 멤버십 가입 및 서비스 이용에 제한이 있을 수 있습니다.
+          </p>
+        </div>
+        <div class="terms-modal__footer">
+          <button
+            type="button"
+            class="terms-modal__footer-btn"
+            data-modal-close
+          >
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 약관 상세 모달: 개인정보 제3자 제공 동의(선택) -->
+    <div class="terms-modal" id="terms-third-modal">
+      <div class="terms-modal__content">
+        <div class="terms-modal__header">
+          <h2 class="terms-modal__title">개인정보 제3자 제공 동의 (선택)</h2>
+          <button
+            type="button"
+            class="terms-modal__close"
+            data-modal-close
+            aria-label="약관 닫기"
+          >
+            <img src="img/x.svg" alt="">
+          </button>
+        </div>
+        <div class="terms-modal__body">
+          <p>
+            <strong class="terms-section-title">개인정보 제3자 제공 동의 (선택)</strong><br />
+            재태국한인회(이하 '한인회')는 회원님의 개인정보를 제3자에게 제공할 경우, 「개인정보보호법」 등 관련 법규에 의거하여 반드시 회원님의 동의를 받고 있습니다. 아래 내용을 자세히 읽으신 후 동의 여부를 결정해 주시기 바랍니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">1. 개인정보를 제공받는 자</strong><br />
+            한인회는 회원들에게 더 나은 서비스와 혜택을 제공하기 위해 다음과 같은 제3자에게 개인정보를 제공할 수 있습니다.<br />
+            1) 주태국 대한민국 대사관 (영사 업무 지원, 비상 연락망 구축 등 공익적 목적)<br />
+            2) 재태국한인회 협력 업체 (회원 할인, 특별 행사 등 제휴 혜택 제공을 위한 업체. 예: 항공사, 여행사, 식당, 의료기관 등. 실제 제공 시 업체명 구체적으로 명시)<br />
+            3) 한인회 산하 단체 또는 유관 기관 (각종 행사 공동 주최, 교류 활동 지원 등)
+          </p>
+
+          <p>
+            <strong class="terms-section-title">2. 제공하는 개인정보 항목</strong><br />
+            제공 목적 달성을 위해 필요한 최소한의 개인정보를 제공합니다.<br />
+            1) 필수 항목: 이름(한글/영문), 태국 현지 연락처(전화번호), 이메일 주소, 가입 유형<br />
+            2) 선택 항목: 생년월일, 성별, 태국 현지 주소, 소속 단체/회사명 등 (제공받는 자의 목적에 따라 상이할 수 있음)
+          </p>
+
+          <p>
+            <strong class="terms-section-title">3. 개인정보를 제공받는 자의 이용 목적</strong><br />
+            개인정보를 제공받는 자는 제공받은 개인정보를 다음과 같은 목적으로 이용할 수 있습니다.<br />
+            1) 주태국 대한민국 대사관: 비상 시 재외국민 보호 및 비상 연락망 구축, 각종 영사 서비스 안내 및 지원<br />
+            2) 재태국한인회 협력 업체: 제휴 할인 및 서비스 제공, 이벤트 참여 기회 제공, 맞춤형 정보 안내<br />
+            3) 한인회 산하 단체 또는 유관 기관: 공동 사업 진행을 위한 회원 확인, 행사 참여자 관리, 교류 활동 지원
+          </p>
+
+          <p>
+            <strong class="terms-section-title">4. 개인정보 보유 및 이용 기간</strong><br />
+            개인정보를 제공받는 자는 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 다만, 관련 법령에 의거하거나 회원과의 계약 이행을 위해 필요한 경우 일정 기간 보유할 수 있습니다.
+          </p>
+
+          <p>
+            <strong class="terms-section-title">5. 동의를 거부할 권리 및 동의 거부 시 불이익</strong><br />
+            회원님은 개인정보 제3자 제공에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부하실 경우 한인회와 제휴된 업체나 기관으로부터 제공되는 할인, 이벤트 등 특정 혜택 및 정보 제공에 제한이 있을 수 있습니다. 한인회 멤버십 서비스 자체는 계속 이용 가능합니다.
+          </p>
+        </div>
+        <div class="terms-modal__footer">
+          <button
+            type="button"
+            class="terms-modal__footer-btn"
+            data-modal-close
+          >
+            닫기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer (사이트 공통 영역) -->
+    <footer>
+      <div class="footerInfoTop">
+        <ul>
+          <li>
+            <span><b>Phone</b> +66-2-1004749</span>
+            <span>
+              <a
+                href="https://www.facebook.com/people/%EC%9E%AC%ED%83%9C%EA%B5%AD%ED%95%9C%EC%9D%B8%ED%9A%8C/61579825591555/"
+                ><img src="img/facebook.svg" alt="facebook"
+              /></a>
+              <a href="https://pf.kakao.com/_Bjfxbn"
+                ><img src="img/kakao-ch.svg" alt="kakao-ch"
+              /></a>
+            </span>
+          </li>
+          <li>
+            <span><b>Email</b> thaihanin@gmail.com</span>
+          </li>
+          <li>
+            <span><b>Tax ID</b> 0993000179251</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footerInfoBottom">
+        <p>사단법인 재태국한인회 (The Korean Association in Thailand)</p>
+        <p>
+          23/16 Sorachai Building 12 Fl., 23 Soi Sukhumvit 63, Klong Tan Nuea,
+          Wattana, Bangkok 10110, Thailand
+        </p>
+      </div>
+
+      <hr />
+
+      <div class="copyright">
+        <p>
+          ⓒ 2025 The Korean Association in Thailand (재태국한인회) All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- 전체 동의 / 개별 약관 체크박스 연동 스크립트 -->
+    <script src="script/allAgrement.js"></script>
+    <!-- 약관 모달 열기/닫기 스크립트 -->
+    <script src="script/agreeModal.js"></script>
+    <!-- 필수 약관 동의 체크 후에만 다음 단계로 이동 -->
+    <script src="script/checkAgree.js"></script>
+  </body>
+</html>

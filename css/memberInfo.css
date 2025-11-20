@@ -1,0 +1,251 @@
+/* ----------------------------------------
+   회원 상세 정보 페이지 레이아웃
+   - 다른 페이지와 동일하게 max-width / padding 맞춤
+---------------------------------------- */
+
+.member-header {
+  width: 100%;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+.member-header__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ----------------------------------------
+   헤더: 뒤로가기 버튼 + 제목 (회원 관리와 동일 스타일)
+---------------------------------------- */
+
+.member-header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.member-header__back .member-header__title {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.member-info-page {
+  max-width: 440px;
+  width: 100%;
+  margin: 80px auto 60px; /* 헤더 높이만큼 위로 띄우기 + 하단 여백 */
+  padding: 0 16px 40px;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------
+   카드 공통 스타일
+---------------------------------------- */
+
+.member-info-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 18px 16px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+.member-info__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+/* ----------------------------------------
+   제출 서류 이미지 카드
+---------------------------------------- */
+
+.member-info-card--images .member-info-images {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.member-info-image__label {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 6px;
+  color: #374151;
+}
+
+.member-info-image__box {
+  position: relative;
+  width: 100%;
+  padding-top: 56%;
+  border-radius: 12px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.member-info-image__box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.member-info-image__empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+@media (min-width: 600px) {
+  .member-info-card--images .member-info-images {
+    flex-direction: row;
+  }
+
+  .member-info-card--images .member-info-image {
+    flex: 1 1 0;
+  }
+}
+
+/* ----------------------------------------
+   정의 리스트 스타일
+---------------------------------------- */
+
+.member-info__list {
+  margin: 0;
+  padding: 0;
+}
+
+.member-info__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.member-info__row:first-of-type {
+  border-top: none;
+}
+
+.member-info__row dt {
+  font-size: 13px;
+  color: #6b7280;
+  flex: 0 0 40%;
+}
+
+.member-info__row dd {
+  margin: 0;
+  font-size: 13px;
+  color: #111827;
+  text-align: right;
+  flex: 0 0 56%;
+  word-break: break-all;
+}
+
+/* ----------------------------------------
+   관리자 회원 목록에서 사용하는 상세보기 버튼
+   (member.html 에서 공통으로 사용)
+---------------------------------------- */
+
+.member-detail-btn {
+  padding: 6px 10px;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.member-detail-btn:hover {
+  border-color: #9ca3af;
+  background-color: #f3f4f6;
+}
+
+/* ----------------------------------------
+   반응형: 모바일 좁은 화면
+---------------------------------------- */
+
+@media (max-width: 480px) {
+  .member-info-page {
+    margin: 72px auto 40px;
+    padding: 0 12px 32px;
+  }
+
+  .member-info-card {
+    padding: 16px 14px 14px;
+  }
+
+  .member-info__row dt,
+  .member-info__row dd {
+    font-size: 12px;
+  }
+}
+
+/* 태블릿 이상에서는 살짝 더 넓게 보이도록 */
+@media (min-width: 600px) {
+  .member-info-page {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .member-info-page {
+    max-width: 600px;
+  }
+}
+
+/* ----------------------------------------
+   쿠폰 상태 배지 스타일
+---------------------------------------- */
+
+.coupon-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+}
+
+.coupon-status--unused {
+  background-color: #ecfdf3;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.coupon-status--used {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.coupon-status--expired {
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #6b7280;
+}
+
+.coupon-status--disabled {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+}

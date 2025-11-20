@@ -1,0 +1,252 @@
+/* 회원가입 페이지 전용 스타일 (infoEnter.html)
+   - 헤더(.agree-header...), 본문(입력 폼), 푸터 레이아웃까지 이 파일에서 관리
+   - 다른 페이지에는 영향을 주지 않음
+*/
+
+/* 전체 레이아웃 */
+body {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+/* 상단 헤더 */
+.agree-header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.agree-header__inner {
+  max-width: 360px;
+  width: 100%;
+  padding-top: 2px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.agree-header__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.agree-header__icon {
+  border: none;
+  background: none;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.agree-header__icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* 메인 컨텐츠 래퍼 (로그인 페이지의 .content와 동일한 가로 규격 사용) */
+.content {
+  flex: 1;
+  max-width: 360px;
+  width: 100%;
+  margin: 20px auto -10px;
+  box-sizing: border-box;
+}
+
+/* ===== 회원가입 정보 입력 영역 ===== */
+
+/* 메인 레이아웃 (입력 폼 영역) */
+.info-main {
+  padding: 32px 16px 80px;
+}
+
+.info-section {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.info-section__title {
+  margin: 24px 0 32px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 폼 레이아웃 */
+.info-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 필드 공통 */
+.info-field {
+  margin-bottom: 16px;
+}
+
+.info-field__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.info-field__label-hint {
+  margin-left: 4px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.info-field__input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+.info-field__input::placeholder {
+  color: #9ca3af;
+}
+
+.info-field__input:focus {
+  outline: 0.5px solid #000000;
+  border-color: #000000;
+  background-color: #ffffff;
+}
+
+/* 비밀번호 아이콘 있는 입력 필드 */
+.info-field__input-wrap {
+  position: relative;
+}
+
+.info-password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-password-toggle img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.info-field__helper {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* 영문 여권 이름 2열 정렬 */
+.info-field-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* 가입 버튼: 약관의 .agree-next-btn 스타일과 유사하게 */
+.agree-next-btn {
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ec2028;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.agree-next-btn:hover {
+  background-color: #c60e17;
+}
+
+.info-submit-btn {
+  margin-top: 24px;
+  width: 100%;
+}
+
+/* ===== 푸터 영역 기본 폭 정렬 ===== */
+
+.footerInfoTop,
+.footerInfoBottom,
+footer hr,
+footer .copyright {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* 반응형 레이아웃: 태블릿 및 데스크톱 */
+@media (min-width: 600px) {
+  .agree-header__inner,
+  .content,
+  .footerInfoTop,
+  .footerInfoBottom,
+  footer hr,
+  footer .copyright {
+    max-width: 440px;
+  }
+
+  .info-main {
+    padding-top: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .agree-header__inner,
+  .content,
+  .footerInfoTop,
+  .footerInfoBottom,
+  footer hr,
+  footer .copyright {
+    max-width: 520px;
+  }
+
+  .info-main {
+    padding-top: 48px;
+  }
+}
+
+/* 모바일 전용: 푸터 자동 높이 */
+@media (max-width: 599px) {
+  footer {
+    height: auto;
+  }
+}
+
+/* 비밀번호 일치/불일치 메시지 */
+.info-field__pw-message {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.info-field__pw-message--match {
+  color: #2563eb; /* 파란색: 비밀번호 일치 */
+}
+
+.info-field__pw-message--mismatch {
+  color: #c60e17; /* 빨간색: 비밀번호 불일치 (약관 버튼과 비슷한 톤) */
+}

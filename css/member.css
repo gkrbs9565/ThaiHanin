@@ -1,0 +1,631 @@
+/* 회원가입 약관 동의 전용 스타일 */
+
+/* 페이지 레이아웃 기본값 (로그인/메뉴 페이지와 통일감 유지) */
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+  
+  /* 상단 헤더 */
+  .agree-header {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e5e7eb;
+    box-sizing: border-box;
+  }
+
+  .agree-header__inner {
+    max-width: 360px;
+    width: 100%;
+    padding-top: 2px;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  .agree-header__title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* BasicMember 전용 상단 헤더 (로그인 헤더와 동일 규격 + 마이페이지 아이콘 추가) */
+  .basic-header {
+    width: 100%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+  }
+
+  .basic-header__inner {
+    max-width: 360px;       /* 본문, 푸터와 동일한 최대 가로 폭 (기존보다 약 30px 확대) */
+    width: 100%;
+    height: 72px;
+    margin: 0 auto;         /* 화면 가운데 정렬 */
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .basic-header__logo img {
+    width: 136px;
+    height: 28px;
+  }
+
+  .basic-header__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* 로그아웃 버튼만 텍스트 버튼으로 표시 */
+  .basic-header__logout {
+    width: 70px;
+    height: 30px;
+
+    border-radius: 5px;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    
+    color: black;
+    
+    cursor: pointer;
+  }
+
+  /* 마이페이지 / 전체 메뉴 아이콘 버튼 (이미지 전용) */
+  .basic-header__icon {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .basic-header__icon img {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* 오른쪽 화살표 (이미지 아이콘) */
+  .agree-row__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .agree-row__arrow img {
+    width: 20px;   /* 약관 보기용 아이콘 크기 살짝 키움 */
+    height: 20px;
+    display: block;
+  }
+  
+  .agree-header__icon {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .agree-header__icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+  
+  /* 메인 컨텐츠 래퍼 (로그인 페이지의 .content와 동일한 가로 규격 사용) */
+  .content {
+    flex: 1;
+    max-width: 360px;
+    width: 100%;
+    margin: 80px auto 60px;
+    box-sizing: border-box;
+  }
+
+/* BasicMember 페이지에서 푸터도 헤더/본문과 동일한 폭으로 맞춤 */
+.HeaderContent,
+.footerInfoTop,
+.footerInfoBottom,
+footer hr,
+.copyright {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+  
+/* ============================
+   정회원(법인회원) 안내 페이지 레이아웃
+   (헤더/푸터는 공통 스타일 그대로 사용)
+============================= */
+
+.basic-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+#memberAfterUpgrade {
+  display: none;
+}
+
+/* 상단 프로필 카드 */
+.basic-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.basic-profile__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.basic-profile__avatar img{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.basic-profile__avatar-initial {
+  font-size: 24px;
+  font-weight: 700;
+  color: #9ca3af;
+}
+
+.basic-profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.basic-profile__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.basic-profile__grade {
+  margin: 0;
+  font-size: 14px;
+  color: #ec2028;
+}
+
+.basic-profile__edit {
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background-color: #f3f4f6;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.basic-profile__edit:hover {
+  background-color: #e5e7eb;
+}
+/* Name + 정회원 안내 카드 */
+.basic-name-card {
+  border-radius: 7px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.basic-name-card--before .basic-name-card__row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.basic-upgrade-card {
+  padding: 24px 20px 20px;
+  background-color: #f9fafb;
+  text-align: center;
+}
+
+.basic-upgrade-card__headline {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.basic-upgrade-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.basic-upgrade-card__link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.basic-name-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.basic-name-card__label {
+  color: #6b7280;
+}
+
+.basic-name-card__value {
+  font-weight: 500;
+}
+
+
+.membership-card__divider {
+  height: 1px;
+  margin: 0 20px;
+  background-color: #e5e7eb;
+}
+
+.membership-card__qr {
+  padding: 20px 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.membership-card__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.membership-card__qr-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.membership-card__qr-image img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+/* 쿠폰 리스트/모달 스타일 */
+.coupon-section {
+  margin-top: 32px;
+}
+
+.coupon-section__title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.coupon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coupon-item {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.coupon-item__left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* 상태 배지와 쿠폰 이름 사이 간격을 줄여서 전체 높이와 시각적 크기를 축소 */
+}
+
+.coupon-item__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 10px;   
+  font-weight: 400;
+}
+
+.coupon-item__status--disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+.coupon-item__status--used {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.coupon-item__status--available {
+  background-color: #ecfdf3;
+  color: #16a34a;
+}
+
+.coupon-item__name {
+  font-size: 14px;       /* 글자 크기 축소 */
+  font-weight: 500;
+  color: #111827;
+  max-width: 220px;      /* 너무 가로로 길어지지 않도록 제한, 필요 시 줄바꿈 */
+  word-break: keep-all;  /* 한국어 단어 단위 유지 */
+}
+
+.coupon-item__arrow img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+/* 쿠폰 상세보기 모달 */
+.coupon-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.coupon-modal.is-open {
+  display: flex;
+}
+
+.coupon-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.coupon-modal__content {
+  position: relative;
+  z-index: 1;
+  max-width: 380px;
+  width: 94%;
+  max-height: 80vh;
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 20px 18px 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.coupon-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.coupon-modal__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.coupon-modal__close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.coupon-modal__body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.coupon-detail {
+  display: none;
+}
+
+.coupon-detail.is-active {
+  display: block;
+}
+
+.coupon-detail p {
+  margin: 0 0 6px;
+}
+
+.coupon-use-btn {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.coupon-use-btn:hover {
+  background-color: #e5e7eb;
+}
+
+/* 공통 섹션 타이틀/리스트 */
+.basic-section {
+  margin-top: 32px;
+}
+
+.basic-section__title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.basic-section__list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.basic-section__sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.basic-section__bank-box {
+  margin-top: 16px;
+  padding: 20px 24px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+}
+
+.basic-section__bank-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #111827;
+}
+
+.basic-section__bank-list li::before {
+  content: "- ";
+}
+
+/* 혜택 안내 아코디언 */
+.benefit-category {
+  margin-top: 24px;
+}
+
+.benefit-category__title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.benefit-accordion {
+  border-top: 1px solid #111827;
+}
+
+
+.benefit__header {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+}
+
+.benefit__title {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.benefit__toggle img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.benefit__body {
+  overflow: hidden;
+  max-height: 0;
+  padding: 0 12px;
+  margin: 0;
+  border-radius: 12px;
+  background-color: #f9fafb;
+  font-size: 14px;
+  line-height: 1.6;
+  transition:
+    max-height 0.25s ease,
+    padding-top 0.25s ease,
+    padding-bottom 0.25s ease,
+    margin-top 0.25s ease,
+    margin-bottom 0.25s ease;
+}
+
+.benefit__body p {
+  margin: 0;
+}
+
+/* 펼쳐진 상태 */
+.benefit.is-open .benefit__body {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+  
+  /* 반응형 레이아웃: 태블릿 및 데스크톱 */
+  @media (min-width: 600px) {
+    .basic-header__inner,
+    .agree-header__inner,
+    .content,
+    .HeaderContent,
+    .footerInfoTop,
+    .footerInfoBottom,
+    footer hr,
+    .copyright {
+      max-width: 440px;
+    }
+    .coupon-modal__content {
+      max-width: 440px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .basic-header__inner,
+    .agree-header__inner,
+    .content,
+    .HeaderContent,
+    .footerInfoTop,
+    .footerInfoBottom,
+    footer hr,
+    .copyright {
+      max-width: 520px;
+    }
+    .coupon-modal__content {
+      max-width: 520px;
+    }
+  }
+  
+  /* 모바일 전용 레이아웃 조정 */
+  @media (max-width: 599px) {
+    footer {
+      height: auto;
+    }
+  }
+  

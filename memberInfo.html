@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원 상세 정보 | 재태국한인회</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- 관리자/회원관리 헤더 공통 스타일 -->
+    <link rel="stylesheet" href="css/member.css" />
+    <!-- 회원 상세 전용 스타일 -->
+    <link rel="stylesheet" href="css/memberInfo.css" />
+  </head>
+  <body>
+    <!-- member.html 과 동일 계열 헤더 사용 -->
+    <header class="member-header">
+      <div class="member-header__inner">
+        <div class="member-header__left">
+          <button
+            type="button"
+            class="member-header__back"
+            aria-label="이전 페이지로 돌아가기"
+            onclick="history.back()"
+          >
+            &#x2190;
+            <span class="member-header__title">회원 상세 정보</span>
+          </button>
+        </div>
+        <div class="member-header__right">
+          <!-- 필요 시 관리자용 버튼 추가 -->
+        </div>
+      </div>
+    </header>
+
+    <main class="member-info-page">
+      <!-- 기본 정보 카드 -->
+      <section class="member-info-card">
+        <h2 class="member-info__title">기본 정보</h2>
+        <dl class="member-info__list">
+          <div class="member-info__row">
+            <dt>이름(한글)</dt>
+            <dd id="infoNameKr">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>여권이름(영문)</dt>
+            <dd id="infoNameEn">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>Email(ID)</dt>
+            <dd id="infoEmail">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>생년월일</dt>
+            <dd id="infoBirth">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>휴대폰번호</dt>
+            <dd id="infoPhone">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>여권번호</dt>
+            <dd id="infoPassportNumber">-</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- 회원 등급 / 신청 정보 카드 -->
+      <section class="member-info-card">
+        <h2 class="member-info__title">회원 등급 및 신청 정보</h2>
+        <dl class="member-info__list">
+          <div class="member-info__row">
+            <dt>현재 등급</dt>
+            <dd id="infoGrade">-</dd>
+          </div>
+          <div class="member-info__row">
+            <dt>정회원/법인회원 신청 상태</dt>
+            <dd id="infoApplyStatus">-</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- 정회원 신청 시 제출한 이미지 -->
+      <section class="member-info-card member-info-card--images">
+        <h2 class="member-info__title">제출 서류 이미지</h2>
+        <div class="member-info-images">
+          <div class="member-info-image">
+            <h3 class="member-info-image__label">여권 사진</h3>
+            <div class="member-info-image__box">
+              <img id="infoPassportImage" alt="여권 사진" />
+              <span class="member-info-image__empty">제출된 이미지 없음</span>
+            </div>
+          </div>
+          <div class="member-info-image">
+            <h3 class="member-info-image__label">회비 납부 사진</h3>
+            <div class="member-info-image__box">
+              <img id="infoPaymentImage" alt="회비 납부 사진" />
+              <span class="member-info-image__empty">제출된 이미지 없음</span>
+            </div>
+          </div>
+          <div class="member-info-image">
+            <h3 class="member-info-image__label">개인 프로필 사진</h3>
+            <div class="member-info-image__box">
+              <img id="infoProfileImage" alt="개인 프로필 사진" />
+              <span class="member-info-image__empty">제출된 이미지 없음</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 쿠폰 사용 현황 카드 -->
+      <section class="member-info-card">
+        <h2 class="member-info__title">쿠폰 사용 현황</h2>
+        <dl class="member-info__list" id="couponList">
+          <!-- JS에서 쿠폰 항목 렌더링 -->
+          <div class="member-info__row">
+            <dt>무료 검진 쿠폰 (MP Lab / BRia Lab)</dt>
+            <dd>쿠폰 정보 없음</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <script src="script/memberInfo.js"></script>
+  </body>
+</html>
