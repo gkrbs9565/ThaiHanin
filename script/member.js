@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentUser.membership_qr_url ||
         currentUser.qrImageUrl ||
         currentUser.qr_image_url ||
-        "https://www.github.com/gkrbs9565/ThaiHanin/MemberVerification.html";
+        "https://gkrbs9565.github.io/ThaiHanin/MemberVerification.html";
 
       // 기존 QR 내용 초기화
       qrContainer.innerHTML = "";
