@@ -1,3 +1,22 @@
+// Supabase 클라이언트 (쿠폰 상태용)
+// 실제 프로젝트 URL / anon key 로 교체해서 사용하세요.
+let supabaseClient = null;
+
+async function getSupabase() {
+  if (supabaseClient) return supabaseClient;
+
+  const { createClient } = await import(
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"
+  );
+
+  // TODO: 아래 두 값은 본인 Supabase 프로젝트 값으로 바꿔야 합니다.
+  const SUPABASE_URL = "https://hocuuvounzhrjborytif.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvY3V1dm91bnpocmpib3J5dGlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0NDEwNTksImV4cCI6MjA3OTAxNzA1OX0.SyVSIovE6YH5uruMmP-nlhdC5H-07GCzMC-hqu12Bzg";
+
+  supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return supabaseClient;
+}
 // MemberVerification.js
 // 회원 인증 성공 페이지 전용 스크립트
 // - 현재 로그인한 회원 정보 불러오기
@@ -45,7 +64,7 @@ function initUserFromUrlParams() {
     var user = {
       email: email || "",
       nameKr: nameKr || "",
-      grade: grade || ""
+      grade: grade || "",
     };
 
     // 영문 이름은 nameEn 필드에 저장 (getUserNameEn에서 nameEn/englishName도 참고함)
@@ -65,7 +84,7 @@ function initUserFromUrlParams() {
     if (couponMp || couponBria) {
       couponStateFromUrl = {
         mp: couponMp,
-        bria: couponBria
+        bria: couponBria,
       };
     }
 
@@ -165,12 +184,7 @@ function getUserNameEn(user) {
 
   // 그래도 없으면 하나라도 있는 값 반환
   return (
-    surname ||
-    given ||
-    user.englishName ||
-    user.nameEn ||
-    user.name_en ||
-    ""
+    surname || given || user.englishName || user.nameEn || user.name_en || ""
   );
 }
 
@@ -243,7 +257,7 @@ function loadCouponState() {
   if (couponStateFromUrl) {
     return {
       mp: normalizeCouponStatus(couponStateFromUrl.mp),
-      bria: normalizeCouponStatus(couponStateFromUrl.bria)
+      bria: normalizeCouponStatus(couponStateFromUrl.bria),
     };
   }
 
@@ -257,7 +271,7 @@ function loadCouponState() {
     var src = currentUser.couponStatus;
     return {
       mp: normalizeCouponStatus(src.mp),
-      bria: normalizeCouponStatus(src.bria)
+      bria: normalizeCouponStatus(src.bria),
     };
   }
 
@@ -270,7 +284,7 @@ function loadCouponState() {
     var obj = JSON.parse(raw);
     return {
       mp: normalizeCouponStatus(obj.mp),
-      bria: normalizeCouponStatus(obj.bria)
+      bria: normalizeCouponStatus(obj.bria),
     };
   } catch (e) {
     console.warn("쿠폰 상태 파싱 실패:", e);
@@ -293,7 +307,7 @@ function saveCouponState(state) {
 
     var updatedStatus = {
       mp: toUserStatus(state.mp),
-      bria: toUserStatus(state.bria)
+      bria: toUserStatus(state.bria),
     };
     currentUser.couponStatus = updatedStatus;
 
@@ -316,6 +330,57 @@ function saveCouponState(state) {
     } catch (e) {
       console.warn("회원 쿠폰 상태 갱신 실패:", e);
     }
+  }
+  // Supabase에도 상태 저장
+  saveCouponStateToDB(state);
+}
+
+// Supabase에 쿠폰 상태 저장 (upsert)
+async function saveCouponStateToDB(state) {
+  if (!currentUserEmail) return;
+  try {
+    const supabase = await getSupabase();
+    const { error } = await supabase.from("coupon_status").upsert({
+      email: currentUserEmail,
+      coupon_mp: state.mp,
+      coupon_bria: state.bria,
+      updated_at: new Date().toISOString(),
+    });
+
+    if (error) {
+      console.warn("쿠폰 상태 저장 실패:", error);
+    }
+  } catch (e) {
+    console.warn("쿠폰 상태 DB 저장 에러:", e);
+  }
+}
+
+// Supabase에서 쿠폰 상태 불러오기
+async function loadCouponStateFromDB(email) {
+  if (!email) return null;
+  try {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase
+      .from("coupon_status")
+      .select("coupon_mp, coupon_bria")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (error) {
+      console.warn("쿠폰 상태 불러오기 실패:", error);
+      return null;
+    }
+    if (!data) {
+      return null;
+    }
+
+    return {
+      mp: normalizeCouponStatus(data.coupon_mp),
+      bria: normalizeCouponStatus(data.coupon_bria),
+    };
+  } catch (e) {
+    console.warn("쿠폰 상태 DB 로드 에러:", e);
+    return null;
   }
 }
 
@@ -394,6 +459,16 @@ function initCouponUI() {
   var state = loadCouponState();
   applyCouponStateToButtons(state);
 
+  // Supabase 기준으로 한 번 더 동기화 (있으면 덮어쓰기)
+  if (currentUserEmail) {
+    loadCouponStateFromDB(currentUserEmail).then(function (dbState) {
+      if (!dbState) return;
+      state = dbState;
+      saveCouponState(state); // 로컬/회원 데이터에 반영
+      applyCouponStateToButtons(state);
+    });
+  }
+
   // 쿠폰 아이템 클릭 → 상세 모달 열기
   var couponButtons = document.querySelectorAll(".coupon-item");
   couponButtons.forEach(function (btn) {
@@ -449,7 +524,7 @@ function initCouponUI() {
         // 하나를 사용하면 다른 하나는 자동으로 사용 불가 처리
         var nextState = {
           mp: normalizeCouponStatus(currentState.mp),
-          bria: normalizeCouponStatus(currentState.bria)
+          bria: normalizeCouponStatus(currentState.bria),
         };
 
         if (type === "mp") {
