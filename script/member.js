@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 1. 상단 프로필 / Name 영역에 현재 로그인한 계정 정보 반영
   // ============================
   var currentUser = getCurrentUser();
+  var currentUserEmail = currentUser && currentUser.email ? currentUser.email : null;
 
   if (currentUser) {
     // DOM 요소 가져오기
@@ -255,13 +256,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var qrContainer = document.getElementById("membershipQr");
     if (qrContainer && typeof QRCode !== "undefined") {
-      // 회원별로 저장된 전용 URL이 있으면 사용, 없으면 기본값으로 www.naver.com 사용
-      var targetUrl =
+      // 기본 이동 대상: GitHub Pages에 배포된 MemberVerification 페이지
+      var baseUrl =
         currentUser.membershipQrUrl ||
         currentUser.membership_qr_url ||
-        currentUser.qrImageUrl ||
-        currentUser.qr_image_url ||
         "https://gkrbs9565.github.io/ThaiHanin/MemberVerification.html";
+
+      // QR에 실어 보낼 회원 정보 파라미터 구성
+      var params = new URLSearchParams();
+
+      if (loginId) params.set("email", loginId);
+      if (nameKr) params.set("nameKr", nameKr);
+      if (nameEnCombined) params.set("nameEn", nameEnCombined);
+      if (typeof grade !== "undefined" && grade) params.set("grade", grade);
+      if (typeof passportNo !== "undefined" && passportNo)
+        params.set("passport", passportNo);
+
+      // 현재 회원의 쿠폰 상태도 함께 실어 보냄 (mp / bria)
+      if (typeof loadCouponState === "function") {
+        var qrCouponState = loadCouponState();
+        if (qrCouponState) {
+          if (qrCouponState.mp) {
+            params.set("couponMp", qrCouponState.mp);
+          }
+          if (qrCouponState.bria) {
+            params.set("couponBria", qrCouponState.bria);
+          }
+        }
+      }
+
+      // 최종 QR 링크: baseUrl + ?파라미터 (정보가 없으면 쿼리스트링 없이 그대로 사용)
+      var targetUrl = params.toString()
+        ? baseUrl + "?" + params.toString()
+        : baseUrl;
 
       // 기존 QR 내용 초기화
       qrContainer.innerHTML = "";
@@ -331,8 +358,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. 쿠폰 리스트 / 쿠폰 상세보기 모달
   // ============================
   // 쿠폰 상태 관리
-  var currentUserEmail =
-    currentUser && currentUser.email ? currentUser.email : null;
 
   function getCouponStateKey() {
     return currentUserEmail

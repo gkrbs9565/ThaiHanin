@@ -14,6 +14,76 @@ var CURRENT_USER_EMAIL_KEY = "currentUserEmail";
 
 var currentUser = null;
 var currentUserEmail = null;
+var couponStateFromUrl = null;
+
+// URL 파라미터로 전달된 회원 정보 읽기 (QR에서 넘어온 값)
+function initUserFromUrlParams() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var email = params.get("email");
+    var nameKr = params.get("nameKr");
+    var nameEn = params.get("nameEn");
+    var grade = params.get("grade");
+    var passport = params.get("passport");
+    var couponMp = params.get("couponMp");
+    var couponBria = params.get("couponBria");
+
+    // 아무 값도 없으면 URL 파라미터 방식은 사용하지 않음
+    if (
+      !email &&
+      !nameKr &&
+      !nameEn &&
+      !grade &&
+      !passport &&
+      !couponMp &&
+      !couponBria
+    ) {
+      return null;
+    }
+
+    // URL 파라미터 기반의 간단한 회원 객체 구성
+    var user = {
+      email: email || "",
+      nameKr: nameKr || "",
+      grade: grade || ""
+    };
+
+    // 영문 이름은 nameEn 필드에 저장 (getUserNameEn에서 nameEn/englishName도 참고함)
+    if (nameEn) {
+      user.nameEn = nameEn;
+      user.englishName = nameEn;
+    }
+
+    if (passport) {
+      user.passportNumber = passport;
+    }
+
+    currentUser = user;
+    currentUserEmail = email || null;
+
+    // URL로 전달된 쿠폰 상태가 있으면 전역 변수에 저장
+    if (couponMp || couponBria) {
+      couponStateFromUrl = {
+        mp: couponMp,
+        bria: couponBria
+      };
+    }
+
+    // URL에서 쿼리스트링 제거 (정보는 JS에 남고, 주소창만 깨끗하게)
+    if (window.history && window.history.replaceState) {
+      var cleanUrl =
+        window.location.origin +
+        window.location.pathname +
+        window.location.hash;
+      window.history.replaceState(null, "", cleanUrl);
+    }
+
+    return user;
+  } catch (e) {
+    console.warn("URL 파라미터에서 회원 정보 읽기 실패:", e);
+    return null;
+  }
+}
 
 // 현재 로그인한 회원 정보 로드
 function initCurrentUser() {
@@ -169,6 +239,14 @@ function normalizeCouponStatus(value) {
 }
 
 function loadCouponState() {
+  // 0순위: QR URL 파라미터로 들어온 쿠폰 상태가 있으면 그 값을 그대로 사용
+  if (couponStateFromUrl) {
+    return {
+      mp: normalizeCouponStatus(couponStateFromUrl.mp),
+      bria: normalizeCouponStatus(couponStateFromUrl.bria)
+    };
+  }
+
   // 1순위: 현재 로그인한 회원 객체에 couponStatus가 있는 경우
   if (
     currentUser &&
@@ -437,7 +515,14 @@ function initBenefitAccordion() {
 // =======================================
 
 document.addEventListener("DOMContentLoaded", function () {
-  initCurrentUser();
+  // 1순위: QR에서 넘어온 URL 파라미터 기반 회원 정보 사용
+  var paramUser = initUserFromUrlParams();
+
+  // URL 파라미터에 회원 정보가 없을 때만 localStorage에서 로드
+  if (!paramUser) {
+    initCurrentUser();
+  }
+
   renderMemberCard();
   initCouponUI();
   initBenefitAccordion();
